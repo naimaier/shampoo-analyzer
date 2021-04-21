@@ -55,6 +55,10 @@ analyzeButton.addEventListener('click', function(){
     const ingredientsInput = document.querySelector('#main__ingredients-input')
     const ingredients = ingredientsInput.value.toUpperCase()
 
+    if (!ingredients) {
+        return
+    }
+
     ingredientsInput.value = ''
 
     const containsFormaldehydes = checkFor(ingredients, formaldehydes)
