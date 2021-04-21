@@ -1,0 +1,48 @@
+:root {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.main {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.main__title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.main__subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#main__ingredients-input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#main__analyze-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 50px;
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        padding-left: calc((100% - 600px) / 2);
+        padding-right: calc((100% - 600px) / 2);
+    }
+}
