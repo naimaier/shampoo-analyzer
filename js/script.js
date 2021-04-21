@@ -3,7 +3,7 @@ const formaldehydes = [
     'QUATERNIUM-5',
     'QUATERNIUM-15',
     'DIMETHYL-DIMETHYL HYDANTOIN',
-    'DMDM',
+    'DMDM HYDANTOIN',
     'IMIDAZOLIDINYL UREA',
     'DIAZOLIDINYL UREA',
     'SODIUM HYDROXYMETHYLGLYCINATE',
@@ -22,6 +22,30 @@ const formaldehydes = [
     'BFV'
 ]
 
+const sulfates = [
+    'LAURIL ÉTER SULFATO DE SÓDIO',
+    'LAURIL ÉTER SULFONATO DE SÓDIO',
+    'SODIUM LAURYL SULFATE',
+    'SODIUM LAURYL ETHER SULFATE',
+    'SODIUM LAURETH SULFATE',
+    'SODIUM DODECYL POLYOXYETHYLENE SULFATE',
+    'SODIUM LAURYL ETHOXYSULFATE',
+    'SODIUM POLYOXYETHYLENE KLAURYL SULFATE',
+    'MONODODECYL ESTER SODIUM SALT SULFURIC ACID',
+    'SODIUM DODECYL SULFATE',
+    'SODIUM LAURYL SULFATE',
+    'SODIUM SALT SULFURIC ACID',
+    'SULFURIC ACID MONODODECYL ESTER SODIUM SALT',
+    'SULFURIC ACID',
+    'SODIUM SALT',
+    'SODIUM CETEARYL SULFATE',
+    'MAGNESIUM SULFATE',
+    'AMMONIUM LAURYL SULFATE',
+    'SODIUM TRIDECETH SULFATE',
+    'TEA-LAURYL SULFATE MAGNESIUM LAURETH SULFATE',
+    'SULFATE'
+]
+
 const analyzeButton = document.querySelector('#main__analyze-button')
 
 analyzeButton.addEventListener('click', function(){
@@ -33,17 +57,24 @@ analyzeButton.addEventListener('click', function(){
 
     ingredientsInput.value = ''
 
-    let containsFormaldehydes = false
+    const containsFormaldehydes = checkFor(ingredients, formaldehydes)
+    resultList.appendChild(createListItem('Formaldehyde', containsFormaldehydes))
 
-    for (i = 0; i < formaldehydes.length; i++) {
-        if (ingredients.includes(formaldehydes[i])) {
-            console.log(`DANGER: ${formaldehydes[i]}`)
-            containsFormaldehydes = true
+    const containsSulfates = checkFor(ingredients, sulfates)
+    resultList.appendChild(createListItem('Sulfate', containsSulfates))
+})
+
+function checkFor(string, array) {
+    let present = false
+
+    for (i = 0; i < array.length; i++) {
+        if (string.includes(array[i])) {
+            present = true
         }
     }
 
-    resultList.appendChild(createListItem('Formaldehyde', containsFormaldehydes))
-})
+    return present
+}
 
 function createListItem(substance, present) {
     let li = document.createElement('li')
