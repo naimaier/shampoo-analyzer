@@ -23,27 +23,28 @@ const formaldehydes = [
 ]
 
 const sulfates = [
-    'LAURIL ÉTER SULFATO DE SÓDIO',
+//    'LAURIL ÉTER SULFATO DE SÓDIO',
     'LAURIL ÉTER SULFONATO DE SÓDIO',
-    'SODIUM LAURYL SULFATE',
+/*    'SODIUM LAURYL SULFATE',
     'SODIUM LAURYL ETHER SULFATE',
     'SODIUM LAURETH SULFATE',
     'SODIUM DODECYL POLYOXYETHYLENE SULFATE',
     'SODIUM LAURYL ETHOXYSULFATE',
-    'SODIUM POLYOXYETHYLENE KLAURYL SULFATE',
+    'SODIUM POLYOXYETHYLENE KLAURYL SULFATE', */
     'MONODODECYL ESTER SODIUM SALT SULFURIC ACID',
-    'SODIUM DODECYL SULFATE',
-    'SODIUM LAURYL SULFATE',
+/*    'SODIUM DODECYL SULFATE',
+    'SODIUM LAURYL SULFATE', */
     'SODIUM SALT SULFURIC ACID',
     'SULFURIC ACID MONODODECYL ESTER SODIUM SALT',
     'SULFURIC ACID',
     'SODIUM SALT',
-    'SODIUM CETEARYL SULFATE',
+/*    'SODIUM CETEARYL SULFATE',
     'MAGNESIUM SULFATE',
     'AMMONIUM LAURYL SULFATE',
     'SODIUM TRIDECETH SULFATE',
-    'TEA-LAURYL SULFATE MAGNESIUM LAURETH SULFATE',
-    'SULFATE'
+    'TEA-LAURYL SULFATE MAGNESIUM LAURETH SULFATE', */
+    'SULFATE',
+    'SULFATO'
 ]
 
 const analyzeButton = document.querySelector('#main__analyze-button')
@@ -53,7 +54,7 @@ analyzeButton.addEventListener('click', function(){
     resultList.innerHTML = ''
 
     const ingredientsInput = document.querySelector('#main__ingredients-input')
-    const ingredients = ingredientsInput.value.toUpperCase()
+    const ingredients = ingredientsInput.value
 
     if (!ingredients) {
         return
@@ -72,7 +73,9 @@ function checkFor(string, array) {
     let present = false
 
     for (i = 0; i < array.length; i++) {
-        if (string.includes(array[i])) {
+        const expression = new RegExp(array[i], 'i')
+
+        if (expression.test(string)) {
             present = true
         }
     }
